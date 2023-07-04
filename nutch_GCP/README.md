@@ -2,16 +2,16 @@
 java  
 -- com  
 ---- google - enterprise - cloudsearch - sdk  
-        LocalFileCredentialFactory.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocalFileCredentialFactory.java  
 -------- config  
-            Configuration.java  
-            ConfigValue.java  
-            Property.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConfigValue.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property.java  
 ------ indexing - template  
-            FullTraversalConnector.java  
-            LocalFileCheckpointHandler.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FullTraversalConnector.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocalFileCheckpointHandler.java  
 ---- search - connector  
-        ConnectorApplication.java  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConnectorApplication.java  
 
 App Engine 내부에서는 os 명령어를 실행하거나 Configuration이나 Checkpoint 파일을 다룰 수 없었다.  
 로컬에서 실행하던 디렉터리 구조로는 PrivateKey.json 파일을 읽어올 수조차 없어 GCP에 연동할 수조차 없었다.  
