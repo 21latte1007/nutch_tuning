@@ -20,7 +20,7 @@ segments = segments[1:]
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./key.json"
 client = bigquery.Client()
-table_id = 'qnacom-service.News_Crawling.news_emotion'
+table_id = '<<BQ_TABLE_ID>>'
 
 for segment in segments:
     seg = BeautifulSoup(segment, 'html.parser')
