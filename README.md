@@ -3,6 +3,7 @@
 
 ## 구현 과정
 ### 기본 아키텍쳐(ex. 최신 뉴스 크롤링)
+![News Crawling 기초 아키텍쳐](https://github.com/21latte1007/nutch_tuning/assets/136875503/e01bf442-2c5f-4259-8ad7-7410d1b16d1e)
 1. 최신 뉴스의 목록을 보여주는 웹페이지의 URL을 seed로 설정하고 크롤링을 진행한다.
 2. 추출한 링크들 중 최신 뉴스의 본문으로 연결되는 URL만 추출해서 새로운 seed 파일을 생성한다.
 3. 제목이나 URL이 동일한 링크를 제거해서 중복 크롤링을 방지하도록 한다.
@@ -11,7 +12,6 @@
 6. DB와 연결하고 테이블을 생성해 업로드한다.
 7. 이후 데이터의 활용 방법은 자유롭게.
 **config.properties 파일을 활용하여 URL, DB, HTML Tag 등의 설정을 조작 가능**
-![News Crawling 기초 아키텍쳐](https://github.com/21latte1007/nutch_tuning/assets/136875503/e01bf442-2c5f-4259-8ad7-7410d1b16d1e)
 
 ### 확장형 아키텍쳐
 ![News Crawling 확장형 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/6f5d4a6a-f78a-4d39-a13e-d2d33eb99f30)
