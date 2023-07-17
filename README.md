@@ -10,8 +10,38 @@
 5. 수집한 웹페이지에서 필요한 부분(제목, 본문, 게시일자 등)의 HTML 태그를 찾아 추출한다.
 6. DB와 연결하고 테이블을 생성해 업로드한다.
 7. 이후 데이터의 활용 방법은 자유롭게.
+**config.properties 파일을 활용하여 URL, DB, HTML Tag 등의 설정을 조작 가능**
+![News Crawling 기초 아키텍쳐](https://github.com/21latte1007/nutch_tuning/assets/136875503/e01bf442-2c5f-4259-8ad7-7410d1b16d1e)
 
-## 디렉터리 구조
+### 확장형 아키텍쳐
+![News Crawling 확장형 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/6f5d4a6a-f78a-4d39-a13e-d2d33eb99f30)
+
+## Nutch 디렉터리 기본 구조
+```
+nutch
+  ∟crawl
+    ∟crawldb // 작업 완료 후 자동 삭제
+    ∟linkdb // 작업 완료 후 자동 삭제
+    ∟segment
+      ∟20230609065544
+      ∟20230609065655
+      ∟....
+  ∟dump
+    ∟dump.txt
+    ∟output.txt
+    ∟result.txt
+  ∟urls
+    ∟2023-06-09
+    ∟2023-06-10
+    ∟....
+    ∟complete.txt
+    ∟complete_2023-06-09.txt
+    ∟complete_2023-06-10.txt
+    ∟freegen.txt
+  ∟result.html
+```
+
+## Github 디렉터리 구조
 ### airflow_dag
 apache airflow를 활용해서 주기적으로 뉴스 크롤링을 진행하고 DB에 업로드하도록 자동화 작업을 구현한 파일.
 
