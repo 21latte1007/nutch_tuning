@@ -43,11 +43,11 @@ nutch
 
 ## Github 디렉터리 구조
 ### airflow_dag
-apache airflow를 활용해서 주기적으로 뉴스 크롤링을 진행하고 DB에 업로드하도록 자동화 작업을 구현한 파일.
+- apache airflow를 활용해서 주기적으로 뉴스 크롤링을 진행하고 DB에 업로드하도록 자동화 작업을 구현한 파일.
 
 ### default
-news_crawling : apache nutch를 활용하여 다음 뉴스 등을 최신순, 혹은 검색어 기준으로 크롤링하는 작업을 구현.
-news_parsing : 위에서 크롤링한 뉴스 HTML에서 필요한 데이터를 추출하여 sqlite, bigquery, mysql(cloud sql) 등에 업로드하는 작업을 구현.
+- news_crawling : apache nutch를 활용하여 다음 뉴스 등을 최신순, 혹은 검색어 기준으로 크롤링하는 작업을 구현.
+- news_parsing : 위에서 크롤링한 뉴스 HTML에서 필요한 데이터를 추출하여 sqlite, bigquery, mysql(cloud sql) 등에 업로드하는 작업을 구현.
 
 ### feat
 - mysql, sqlite, bigquery : 각각 해당하는 DB로 결과물을 Insert.
