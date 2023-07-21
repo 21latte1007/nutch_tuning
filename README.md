@@ -1,5 +1,6 @@
 # nutch_tuning
 ## apache nutch, airflow 등 오픈소스를 활용하여 대량의 웹 크롤링(ex. 다음 뉴스, 국가 정책 PDF)
+**+ selenium을 곁들여 추가 크롤링**
 
 ## 구현 과정
 ### 기본 아키텍쳐(ex. 최신 뉴스 크롤링)
@@ -56,7 +57,8 @@ nutch
 
 ### other
 - down_pdf : 첨부파일(ex. 국가 정책 PDF)을 대량으로 다운할 수 있는 작업 구현.
+- emotion_gcs : 셀레니움으로 동적 데이터가 포함된 HTML을 크롤링 후 Google Cloud Storage에 업로드하는 작업 구현.
 - html_name_config : 크롤링한 HTML의 파일명을 HTML 내부의 'title' 태그로 지정하는 작업 구현.
-- upload_real_time_to_gcs : 어떤 파일을 가져오는(작성하는) 즉시 Google Cloud Storage에 업로드할 수 있는 작업 구현.
+- upload_real_time_to_gcs : 어떤 파일을 가져오는(작성하는) 즉시 Google Cloud Storage에 업로드하는 작업 구현.
 - replace_string : 문자열 수정 기본.
 - web_crwaling : 웹 크롤링 기본.
