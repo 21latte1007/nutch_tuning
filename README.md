@@ -10,6 +10,7 @@
 
 ### 프로세스, 아키텍쳐 구상
 **Step 1. Nutch**
+```
 수집하고자 하는 뉴스 목록 URL, 페이지 개수 입력.
 ex) 최신기사 URL - “yna.co.kr/news/{n}”
 “bin/nutch freegen /seed /crawl” 명령어 실행.
@@ -25,15 +26,18 @@ parsedata의 outlink와 anchor 추출, {outlink, anchor} List 작성.
 List에서 이전에 수집한 기사와 동일한 URL이나 제목 제거.
 중복 제거된 {outlink, anchor} List를 바탕으로 새로운 Seed 작성.
 “bin/crawl -i -s <seed file path> crawl/ 1” 명령어 실행.
-
+```
 **Step 2. DB**
+```
 필요한 데이터(기사 제목, URL, 이미지, 본문 등) tag 기반으로 수집.
 테이블 생성 후 DB에 적재.
-
+```
 **Step 3. Airflow**
+```
 pip install로 airflow 설치.
 airflow 폴더 내부에 dags 폴더 생성 후 python 스크립트 작성.
 A part와 B part로 Task를 나누어 스케쥴링.
+```
 
 **Local ubuntu 환경에서 구현**
 ```
