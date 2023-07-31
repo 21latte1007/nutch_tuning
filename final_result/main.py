@@ -27,7 +27,6 @@ complete_crawling.url_storage_organize(seed, compelted, new_urls, complete_urls)
 complete_crawling.url_list_crawling()
 
 ###### Part Parsing
-### TODO : HTML Array File Load ###
 with open(HTML_ARRAY_FILE, 'r') as file:
   html = file.read()
   
@@ -42,8 +41,8 @@ for segment in segments:
 
   ###### Part Data Load
   complete_load.local_save(json_data, html_data)
-  # complete_load.upload_big_query(json_data)
-  # complete_load.upload_cloud_sql(json_data)
+  complete_load.upload_big_query(json_data)
+  complete_load.upload_cloud_sql(json_data)
 
 complete_load.upload_cloud_storage()
 complete_load.record_delete()
