@@ -31,7 +31,7 @@ def local_save(json_data, html_data):
   elements, counts = count_elements(TEMP_SAVE_FILE_TYPE)
   for element in elements:
     if element == '.json' or element == '.JSON':
-      create_file_json(TEMP_SAVE_FOLDER_PATH[elements.index(element)] + '/{0}.json', json_data[TEMP_SAVE_FILE_NAME_RULE[elements.index(element)]], json_data)
+      create_file_json(TEMP_SAVE_FOLDER_PATH[elements.index(element)] + '/{0}.json', json_data[TEMP_SAVE_FILE_NAME_RULE[elements.index(element)]].replace('/', '\''), json_data)
     elif element == '.html' or element == '.HTML':
       create_file_html(TEMP_SAVE_FOLDER_PATH[elements.index(element)] + '/{0}.html', json_data['url'].split(TEMP_SAVE_FILE_NAME_RULE[elements.index(element)])[1], html_data)
 
