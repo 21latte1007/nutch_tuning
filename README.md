@@ -1,6 +1,7 @@
 # nutch_tuning
 ## apache nutch, airflow 등 오픈소스를 활용하여 대량의 웹 크롤링(ex. 다음 뉴스, 국가 정책 PDF)
 **+ selenium을 곁들여 추가 크롤링**
+
 **최종 코드는 `final_result` Dir에 위치. 아래의 Nutch 디렉터리 기본 구조에 맞춰 파일을 배치하면 프로그램 동작작**
 
 ### 요구사항
@@ -75,7 +76,7 @@ password 입력.
 **config.properties 파일을 활용하여 URL, DB, HTML Tag 등의 설정을 조작 가능**
 
 ### 무중단 아키텍쳐
-**현재 구상 단계 / 구현 없음**
+`현재 구상 단계 / 구현 없음`
 ![News Crawling 무중단 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/8506e228-6acc-4bdf-9288-bb75f61b2d56)
 
 ### 확장형 아키텍쳐
