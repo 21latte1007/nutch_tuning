@@ -2,7 +2,7 @@
 ## apache nutch, airflow 등 오픈소스를 활용하여 대량의 웹 크롤링(ex. 다음 뉴스, 국가 정책 PDF)
 **+ selenium을 곁들여 추가 크롤링**
 
-**최종 코드는 `final_result` Dir에 위치. 아래의 Nutch 디렉터리 기본 구조에 맞춰 파일을 배치하면 프로그램 동작작**
+**최종 코드는 `final_result` Dir에 위치. 아래의 Nutch 디렉터리 기본 구조에 맞춰 파일을 배치하면 프로그램 동작**
 
 ### 요구사항
 - 특정 분류 URL 수집
