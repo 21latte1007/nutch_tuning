@@ -1,6 +1,7 @@
 # nutch_tuning
 ## apache nutch, airflow 등 오픈소스를 활용하여 대량의 웹 크롤링(ex. 다음 뉴스, 국가 정책 PDF)
 **+ selenium을 곁들여 추가 크롤링**
+**최종 코드는 `final_result` Dir에 위치. 아래의 Nutch 디렉터리 기본 구조에 맞춰 파일을 배치하면 프로그램 동작작**
 
 ### 요구사항
 - 특정 분류 URL 수집
@@ -8,7 +9,7 @@
 - 크롤링한 데이터 정제 후 DB 적재
 - 주기적인 크롤링
 
-### 프로세스, 아키텍쳐 구상
+### 프로세스, 아키텍쳐 초기 구상
 **Step 1. Nutch**
 ```
 수집하고자 하는 뉴스 목록 URL, 페이지 개수 입력.
@@ -63,7 +64,7 @@ password 입력.
 
 ## 구현 과정
 ### 기본 아키텍쳐(ex. 최신 뉴스 크롤링)
-![News Crawling 기초 아키텍쳐](https://github.com/21latte1007/nutch_tuning/assets/136875503/e01bf442-2c5f-4259-8ad7-7410d1b16d1e)
+![News Crawling 기초 아키텍쳐](https://github.com/21latte1007/nutch_tuning/assets/136875503/f9e977f5-6721-401a-a62b-1b5d9d6a2dc7)
 1. 최신 뉴스의 목록을 보여주는 웹페이지의 URL을 seed로 설정하고 크롤링을 진행한다.
 2. 추출한 링크들 중 최신 뉴스의 본문으로 연결되는 URL만 추출해서 새로운 seed 파일을 생성한다.
 3. 제목이나 URL이 동일한 링크를 제거해서 중복 크롤링을 방지하도록 한다.
@@ -73,8 +74,16 @@ password 입력.
 7. 이후 데이터의 활용 방법은 자유롭게.
 **config.properties 파일을 활용하여 URL, DB, HTML Tag 등의 설정을 조작 가능**
 
+### 무중단 아키텍쳐
+**현재 구상 단계 / 구현 없음**
+![News Crawling 무중단 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/8506e228-6acc-4bdf-9288-bb75f61b2d56)
+
 ### 확장형 아키텍쳐
-![News Crawling 확장형 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/6f5d4a6a-f78a-4d39-a13e-d2d33eb99f30)
+![News Crawling 확장형 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/48125772-d265-49f8-b5e4-95a52cd5498c)
+1. Crawling.py는 config 파일에서 사용자가 설정한 URL을 읽어들여 웹 페이지를 크롤링하는 역할만 수행한다.
+2. Pasring.py는 config 파일에서 사용자가 필요로 하는 Tag를 읽어들여 Html의 태그를 파싱하는 역할만 수행한다.
+3. Loading.py는 config 파일에서 사용자가 연결한 저장소 정보를 읽어들여 Json이나 Html 등의 파일을 적재하는 역할만 수행한다.
+4. 세 프로세스를 이어붙여 작동시킨다. 결과물은 final_result Dir에.
 
 ## Nutch 디렉터리 기본 구조
 ```
@@ -102,6 +111,13 @@ nutch
 ```
 
 ## Github 디렉터리 구조
+### final_result (최종 결과물)
+- config.properties : 설정 파일. URL, Tag, DB 등의 설정을 관리
+- crawling.py : 웹 페이지를 크롤링해 오는 역할
+- loading.py : Json이나 Html 파일을 저장소에 업로드하는 역할
+- main.py : 따로 분리된 세 프로세스를 연이어 실행해서 유의미한 프로세스를 이루 역할
+- parsing.py : 웹 페이지에서 태그를 추출하는 역할
+
 ### airflow_dag
 - apache airflow를 활용해서 주기적으로 뉴스 크롤링을 진행하고 DB에 업로드하도록 자동화 작업을 구현한 파일.
 
@@ -114,7 +130,7 @@ nutch
 - emotion : apache nutch에 selenium을 함꼐 활용하여 동적 데이터인 유저 반응이나 댓글 관련 정보를 파싱하는 작업 구현.
 - config : 위에서처럼 sqlite, bigquery 등 DB의 종류에 따라 코드를 새로 작성할 필요 없이, HTML에서 파싱해 올 태그가 바뀔 때마다 코드 전체를 손 볼 필요 없이 "config.properties" 파일에서 옵션 파라미터를 조정하는 것으로 바로 구현이 되도록 "확장성"을 염두하고 구현.
 
-### other
+### etc
 - down_pdf : 첨부파일(ex. 국가 정책 PDF)을 대량으로 다운할 수 있는 작업 구현.
 - emotion_gcs : 셀레니움으로 동적 데이터가 포함된 HTML을 크롤링 후 Google Cloud Storage에 업로드하는 작업 구현.
 - html_name_config : 크롤링한 HTML의 파일명을 HTML 내부의 'title' 태그로 지정하는 작업 구현.
