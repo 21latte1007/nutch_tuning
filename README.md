@@ -77,6 +77,7 @@ password 입력.
 
 ### 무중단 아키텍쳐
 `현재 구상 단계 / 구현 없음`
+
 ![News Crawling 무중단 아키텍쳐 구상도](https://github.com/21latte1007/nutch_tuning/assets/136875503/8506e228-6acc-4bdf-9288-bb75f61b2d56)
 
 ### 확장형 아키텍쳐
